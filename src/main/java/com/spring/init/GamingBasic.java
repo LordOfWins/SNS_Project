@@ -16,7 +16,8 @@ public class GamingBasic {
 
     public static void main(String[] args) {
 //        var game=new Mario();
-        var game = new SuperContra();
+//        var game = new SuperContra();
+        var game = new PackMan();
         var runner = new Runner(game);
         runner.run();
     }

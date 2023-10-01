@@ -4,7 +4,7 @@ import java.util.logging.Level;
 
 import static com.spring.init.GamingBasic.*;
 
-public class Mario {
+public class Mario implements Console {
 
     //up function
     public void up() {

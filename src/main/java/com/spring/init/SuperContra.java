@@ -4,7 +4,7 @@ import java.util.logging.Level;
 
 import static com.spring.init.GamingBasic.*;
 
-public class SuperContra {
+public class SuperContra implements Console {
     //up function
     public void up() {
         LOG.log(Level.INFO, FONT_WHITE + "Going up" + RESET);

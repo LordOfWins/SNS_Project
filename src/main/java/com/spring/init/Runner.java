@@ -7,10 +7,10 @@ import static com.spring.init.GamingBasic.*;
 
 public class Runner {
 
-    SuperContra game;
+    Console game;
 
-    public Runner(SuperContra mario) {
-        this.game = mario;
+    public Runner(Console game) {
+        this.game = game;
     }
 
     public void run() {
