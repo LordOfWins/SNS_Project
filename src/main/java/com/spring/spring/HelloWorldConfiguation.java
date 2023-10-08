@@ -1,14 +1,16 @@
 package com.spring.spring;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class HelloWorldConfiguation {
 
     @Bean
     public String name() {
-        return "World";
+        return "Seungjae";
     }
 
     @Bean
@@ -18,33 +20,42 @@ public class HelloWorldConfiguation {
 
     @Bean
     public Person person() {
-        return new Person("Seungjae", 27, new Address("I", "Seoul"));
+        return new Person("Seungjae", 27, new Address("ggg", "Seoul"));
     }
 
     @Bean
     public Person personMethodCall() {
-        return new Person(name(), age(), address());
+        return new Person(name(), age(), address3());
     }
 
     @Bean
-    public Person personParameter(String name, int age, Address address2) {
-        return new Person(name, age, address2);
+    public Person personParameter(String name, int age, Address address3) {
+        return new Person(name, age, address3);
+    }
+
+    @Bean
+    @Primary
+    public Person personParameter2(String name, int age, Address address) {
+        return new Person(name, age, address);
+    }
+
+    @Bean
+    public Person personParameter3(@Qualifier("name") String name, @Qualifier("age") int age, @Qualifier("address3") Address address3) {
+        return new Person(name, age, address3);
     }
 
     @Bean(name = "address2")
+    @Primary
     public Address address() {
-        return new Address("I", "Seoul");
+        return new Address("RTERTE", "Seoul");
     }
 
     @Bean(name = "address3")
+    @Qualifier("address3")
     public Address address3() {
-        return new Address("K", "Busan");
+        return new Address("GHGGH", "Busan");
     }
 
-    public record Person(String name, int age, Address address) {
-    }
-
-
-    public record Address(String street, String city) {
-    }
 }
+
+

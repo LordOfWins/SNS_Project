@@ -4,6 +4,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.Arrays;
+
 
 public class HelloWorldSpring {
 
@@ -13,18 +15,26 @@ public class HelloWorldSpring {
         //Launch a Spring context
         var context = new AnnotationConfigApplicationContext(HelloWorldConfiguation.class);
         //Configure the things that we want Spring to manage
-        log.info(context.getBean("name"));
+        log.info("name : " + context.getBean("name"));
 
-        log.info(context.getBean("age"));
+        log.info("age : " + context.getBean("age"));
 
-        log.info(context.getBean("person"));
+        log.info("person : " + context.getBean("person"));
 
-        log.info(context.getBean("personMethodCall"));
+        log.info("personMethodCall : " + context.getBean("personMethodCall"));
 
-        log.info(context.getBean("personParameter"));
+        log.info("personParameter : " + context.getBean("personParameter"));
 
-        log.info(context.getBean("address2"));
+        log.info("personParameter2 : " + context.getBean("personParameter2"));
 
-//        log.info(context.getBean(HelloWorldConfiguation.Address.class));
+        log.info("address2 : " + context.getBean("address2"));
+
+        log.info("Person.class : " + context.getBean(Person.class));
+
+        log.info("Address.class : " + context.getBean(Address.class));
+
+        log.info("personParameter3 : " + context.getBean("personParameter3"));
+
+        Arrays.stream(context.getBeanDefinitionNames()).forEach(log::info);
     }
 }
