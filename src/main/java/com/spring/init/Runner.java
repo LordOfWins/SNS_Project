@@ -7,17 +7,17 @@ import static com.spring.init.GamingBasic.*;
 
 public class Runner {
 
-    Console game;
+    Console console;
 
-    public Runner(Console game) {
-        this.game = game;
+    public Runner(Console console) {
+        this.console = console;
     }
 
     public void run() {
-        LOG.log(Level.INFO, FONT_WHITE + "Running game: {0}" + RESET, FONT_BRIGHT_CYAN + game + RESET);
-        game.up();
-        game.down();
-        game.left();
-        game.right();
+        LOG.log(Level.INFO, FONT_WHITE + "Running game: {0}" + RESET, FONT_BRIGHT_CYAN + console + RESET);
+        console.up();
+        console.down();
+        console.left();
+        console.right();
     }
 }
