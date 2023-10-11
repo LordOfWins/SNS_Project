@@ -1,5 +1,6 @@
 package com.spring.spring;
 
+import com.spring.helloworld.HelloWorldConfiguation;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
