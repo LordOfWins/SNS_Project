@@ -29,7 +29,7 @@ public class HelloWorldConfiguation {
 
     @Bean
     public Person personMethodCall() {
-        return new Person(name(), age(), address3());
+        return new Person(name(), myAge(), address3());
     }
 
     @Bean
@@ -45,7 +45,7 @@ public class HelloWorldConfiguation {
 
     @Bean
     public Person personParameter3(
-            @Qualifier("name") String name, @Qualifier("age") int age, @Qualifier("address3") Address address3) {
+            @Qualifier("name") String name, @Qualifier("myAge") int age, @Qualifier("address3") Address address3) {
         return new Person(name, age, address3);
     }
 
