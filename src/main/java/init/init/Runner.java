@@ -2,10 +2,11 @@ package init.init;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Component;
 
 import static init.init.GamingBasic.*;
 
-
+@Component
 public class Runner {
 
     private static final Log LOG = LogFactory.getLog(Runner.class);

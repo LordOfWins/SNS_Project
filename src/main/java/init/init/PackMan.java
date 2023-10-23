@@ -2,10 +2,14 @@ package init.init;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 
 import static init.init.GamingBasic.FONT_WHITE;
 import static init.init.GamingBasic.RESET;
 
+@Component
+@Primary
 public class PackMan implements Console {
 
     private static final Log LOG = LogFactory.getLog(PackMan.class);

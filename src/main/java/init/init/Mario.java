@@ -2,10 +2,12 @@ package init.init;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Component;
 
 import static init.init.GamingBasic.FONT_WHITE;
 import static init.init.GamingBasic.RESET;
 
+@Component
 public class Mario implements Console {
 
     private static final Log LOG = LogFactory.getLog(Mario.class);
