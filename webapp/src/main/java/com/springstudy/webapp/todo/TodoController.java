@@ -25,14 +25,17 @@ public class TodoController {
 
   // GET, POST 상관 없음
   @RequestMapping(value = "add", method = RequestMethod.GET)
-  public String showTodo() {
+  public String showTodo(ModelMap modelMap) {
+    String username = (String) modelMap.get("name");
+    Todo todo = new Todo(0, username, "", LocalDate.now().plusYears(1), false);
+    modelMap.put("todo", todo);
     return "todo";
   }
 
   @RequestMapping(value = "add", method = RequestMethod.POST)
-  public String addTodo(String description, ModelMap modelMap) {
+  public String addTodo(ModelMap modelMap, Todo todo) {
     String username = (String) modelMap.get("name");
-    todoService.addTodo(username, description, LocalDate.now().plusYears(1), false);
+    todoService.addTodo(username, todo.getDescription(), LocalDate.now().plusYears(1), false);
     return "redirect:list";
   }
 }
