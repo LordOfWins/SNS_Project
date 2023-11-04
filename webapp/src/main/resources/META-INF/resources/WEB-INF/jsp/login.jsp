@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+<%@ include file="common/header.jspf" %>
+<title>Login</title>
 </head>
 <body>
+<%@ include file="common/navigation.jspf" %>
 <div class="container">
     <h1>Login</h1>
     <pre>${error}</pre>
