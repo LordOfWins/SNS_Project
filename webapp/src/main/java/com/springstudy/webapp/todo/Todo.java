@@ -1,11 +1,15 @@
 package com.springstudy.webapp.todo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
+@Entity
 public class Todo {
-  private boolean isDone;
-  private int id;
+  private boolean done;
+  @Id @GeneratedValue private int id;
   private String username;
 
   @Size(min = 10, message = "Enter at least 10 characters...")
@@ -13,13 +17,15 @@ public class Todo {
 
   private LocalDate targetDate;
 
-  public Todo(int id, String username, String description, LocalDate targetDate, boolean isDone) {
+  public Todo(int id, String username, String description, LocalDate targetDate, boolean done) {
     this.id = id;
     this.username = username;
     this.description = description;
     this.targetDate = targetDate;
-    this.isDone = isDone;
+    this.done = done;
   }
+
+  public Todo() {}
 
   public int getId() {
     return id;
@@ -53,12 +59,12 @@ public class Todo {
     this.targetDate = targetDate;
   }
 
-  public boolean isIsDone() {
-    return isDone;
+  public boolean isDone() {
+    return done;
   }
 
-  public void setIsDone(boolean isDone) {
-    this.isDone = isDone;
+  public void setDone(boolean done) {
+    this.done = done;
   }
 
   @Override
@@ -74,8 +80,8 @@ public class Todo {
         + '\''
         + ", targetDate="
         + targetDate
-        + ", isDone="
-        + isDone
+        + ", done="
+        + done
         + '}';
   }
 }

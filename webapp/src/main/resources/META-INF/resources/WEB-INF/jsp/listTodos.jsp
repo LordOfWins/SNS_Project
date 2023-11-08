@@ -21,7 +21,7 @@
             <tr>
                 <td>${todo.description}</td>
                 <td>${todo.targetDate}</td>
-                <td>${todo.isDone}</td>
+                <td>${todo.done}</td>
                 <td><a href="update?id=${todo.id}" class="btn btn-outline-success">Update</a></td>
                 <td><a href="delete?id=${todo.id}" class="btn btn-danger">Delete</a></td>
             </tr>
