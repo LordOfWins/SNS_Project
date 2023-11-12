@@ -1,5 +1,6 @@
 package org.springstudy.restfulweb.user;
 
+import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +30,13 @@ public class UserResource {
     return user;
   }
 
+  @DeleteMapping("/users/{id}")
+  public void deleteUser(@PathVariable Integer id) {
+    service.deleteById(id);
+  }
+
   @PostMapping("/users")
-  public ResponseEntity<User> createUser(@RequestBody User user) {
+  public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
     User savedUser = service.save(user);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
