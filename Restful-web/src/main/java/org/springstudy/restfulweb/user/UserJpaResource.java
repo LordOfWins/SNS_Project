@@ -50,7 +50,7 @@ public class UserJpaResource {
     userRepository.deleteById(id);
   }
 
-  @GetMapping("/jpa/users/{id}/post")
+  @GetMapping("/jpa/users/{id}/posts")
   public List<Post> getAllPost(@PathVariable Integer id) {
     Optional<User> user = userRepository.findById(id);
     if (user.isEmpty()) {
@@ -70,7 +70,7 @@ public class UserJpaResource {
     return ResponseEntity.created(location).build();
   }
 
-  @PostMapping("/jpa/users/{id}/post")
+  @PostMapping("/jpa/users/{id}/posts")
   public ResponseEntity<Object> createPost(@PathVariable int id, @Valid @RequestBody Post post) {
     Optional<User> user = userRepository.findById(id);
     if (user.isEmpty()) {
@@ -86,7 +86,7 @@ public class UserJpaResource {
     return ResponseEntity.created(location).build();
   }
 
-  @GetMapping("/jpa/users/{id}/post/{postId}")
+  @GetMapping("/jpa/users/{id}/posts/{postId}")
   public EntityModel<Post> getPost(@PathVariable int id, @PathVariable int postId) {
 
     Optional<Post> post = postRepository.findById(postId);
