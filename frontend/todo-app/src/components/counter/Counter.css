@@ -9,10 +9,8 @@ const buttonStyle = {
     borderRadius: "30px"
 
 }*/
-
-.counterButton {
+button {
     font-size: 16px;
-    background-color: #4caaaa;
     width: 100px;
     margin: 10px;
     color: white;
@@ -22,7 +20,20 @@ const buttonStyle = {
     border-width: 5px;
 }
 
+.counterButton {
+    background-color: #4caaaa;
+}
+
 .counterValue {
-    font-size: 100px;
+    font-size: 50px;
     padding: 20px;
+}
+
+.totalCount {
+    font-size: 100px;
+    color: #000000;
+}
+
+.resetButton {
+    background-color: #6c1b73;
 }
