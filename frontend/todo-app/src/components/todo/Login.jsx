@@ -20,8 +20,8 @@ export function Login() {
     setSavedPassword(e.target.value);
   }
 
-  function handleSubmit() {
-    if (authContext.login(savedName, savedPassword)) {
+  async function handleSubmit() {
+    if (await authContext.login(savedName, savedPassword)) {
       navigate(`/welcome/${savedName}`);
     } else {
       setShowErrorPageMessage(true);

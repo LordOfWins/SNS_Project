@@ -4,15 +4,10 @@ import { useAuth } from "./security/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export function ListTodo() {
-  const today = new Date();
   const authContext = useAuth();
   const username = authContext.username;
   const navigate = useNavigate();
-  const targetDate = new Date(
-    today.getFullYear() + 12,
-    today.getMonth(),
-    today.getDay(),
-  );
+
   const [todos, setTodos] = useState([]);
   const [message, setMessage] = useState(null);
 
