@@ -62,7 +62,7 @@ export default function TodoComponent() {
     if (
       values.targetDate == null ||
       values.targetDate === "" ||
-      moment(values.targetDate).isValid()
+      !moment(values.targetDate).isValid()
     ) {
       errors.targetDate = "Enter a valid targetDate";
     }

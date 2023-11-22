@@ -1,7 +1,7 @@
 //1: Create a Context
 import React, { createContext, useContext, useMemo, useState } from "react";
 import { apiClient } from "../api/ApiClient";
-import { executeBasicAuth } from "../api/ExecuteBasicAuth";
+import { executeJwtAuth } from "../api/ExecuteBasicAuth";
 
 export const AuthContext = createContext(undefined);
 export const useAuth = () => useContext(AuthContext);
@@ -20,14 +20,15 @@ export default function AuthProvider({ children }) {
   async function login(username, password) {
     const basicToken = "Basic " + window.btoa(username + ":" + password);
     try {
-      const response = await executeBasicAuth(basicToken);
+      const response = await executeJwtAuth(username, password);
 
       if (response.status === 200) {
         setIsAuthenticated(true);
         setUsername(username);
-        setToken(basicToken);
+        const jwtToken = "Bearer " + response.data.token;
+        setToken(jwtToken);
         apiClient.interceptors.request.use((config) => {
-          config.headers.Authorization = basicToken;
+          config.headers.Authorization = jwtToken;
           return config;
         });
         return true;
