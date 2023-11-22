@@ -11,13 +11,6 @@ import org.springframework.stereotype.Service;
 public class TodoService {
   private static final List<Todo> todos = new ArrayList<>();
 
-  static {
-    todos.add(new Todo(1, "test", "Learn Java", LocalDate.now().plusYears(1), false));
-    todos.add(new Todo(2, "test", "Learn Spring", LocalDate.now().plusYears(2), false));
-    todos.add(new Todo(3, "test", "Learn Spring Boot", LocalDate.now().plusYears(3), false));
-    todos.add(new Todo(4, "test", "Learn Project", LocalDate.now().plusYears(4), false));
-  }
-
   public List<Todo> findByUsername(String username) {
     Predicate<Todo> predicate = todo -> todo.getUsername().equalsIgnoreCase(username);
     return todos.stream().filter(predicate).toList();

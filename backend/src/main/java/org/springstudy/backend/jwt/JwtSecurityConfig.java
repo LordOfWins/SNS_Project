@@ -21,6 +21,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,6 +34,7 @@ import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthen
 import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 @Configuration
 @EnableWebSecurity
@@ -40,14 +42,19 @@ import org.springframework.security.web.SecurityFilterChain;
 public class JwtSecurityConfig {
 
   @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-
+  public SecurityFilterChain securityFilterChain(
+      HttpSecurity httpSecurity, HandlerMappingIntrospector introspector) throws Exception {
+    httpSecurity.csrf(AbstractHttpConfigurer::disable);
+    httpSecurity.headers(
+        headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
     // h2-console is a servlet
     // https://github.com/spring-projects/spring-security/issues/12310
     return httpSecurity
         .authorizeHttpRequests(
             auth ->
                 auth.requestMatchers("/authenticate")
+                    .permitAll()
+                    .requestMatchers("/h2-console/**")
                     .permitAll()
                     .requestMatchers(HttpMethod.OPTIONS, "/**")
                     .permitAll()

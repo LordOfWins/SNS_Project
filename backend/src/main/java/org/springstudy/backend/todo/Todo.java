@@ -1,19 +1,25 @@
 package org.springstudy.backend.todo;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "todos")
 public class Todo {
-  private boolean done;
-  private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  private Integer id;
+
   private String username;
 
-  @Size(min = 10, message = "Enter at least 10 characters...")
+  @Size(min = 5, message = "Enter at least 10 characters...")
   private String description;
 
   private LocalDate targetDate;
+  private boolean done;
 
-  public Todo(int id, String username, String description, LocalDate targetDate, boolean done) {
+  public Todo(Integer id, String username, String description, LocalDate targetDate, boolean done) {
     this.id = id;
     this.username = username;
     this.description = description;
@@ -23,11 +29,11 @@ public class Todo {
 
   public Todo() {}
 
-  public int getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
